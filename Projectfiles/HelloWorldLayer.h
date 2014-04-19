@@ -18,6 +18,7 @@
     
     int playerspeed;
     int playerangle;
+    int directionchange;
     bool direction;
 }
 

@@ -29,6 +29,7 @@
         
         //THE CLOCK ITSELF.
 		clock = [CCSprite spriteWithFile:@"clock.png"];
+        clock.scale = 0.8;
         clock.position = ccp(160,240);
         [self addChild:clock];
         
@@ -36,14 +37,17 @@
         
         //PLAYER MODEL.
         player = [CCSprite spriteWithFile:@"player.png"];
-        player.position = ccp(160,400);
+        player.scale = 0.4;
+        player.position = ccp(155,390);
         [self addChild:player];
         
         
         
         //INITIATING VARIABLES
         playerangle = 180;
-        playerspeed = 10;
+        playerspeed = 7;
+        directionchange = 4;
+        direction = true;
         
         [self scheduleUpdate];
 	}
@@ -57,7 +61,21 @@
     
     KKInput* input = [KKInput sharedInput];
  
-    playerangle = playerangle + 4;
+    if(direction)
+    {
+        playerangle = playerangle + directionchange;
+    }
+    else
+    {
+        playerangle = playerangle - directionchange;
+    }
+    
+    
+    if ([KKInput sharedInput].anyTouchBeganThisFrame) {
+        direction = !direction;
+        playerangle = 180 - playerangle;
+    }
+
     
     [self movePlayer];
 
@@ -74,8 +92,6 @@
     float vy = sin(angle * M_PI / 180) * speed;
     
     CGPoint direction2 = ccp(vx,vy);
-    
-    NSLog(@"meh");
     
     player.position = ccpAdd(player.position, direction2);
 }
