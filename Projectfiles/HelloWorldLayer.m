@@ -51,15 +51,12 @@
         // perform rotation of rotateMe around center by rotating center
         id rotate = [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:1 angle:360]];
         [center runAction:rotate];
-        
-        
-        
-        
-        
-        
+
         
         //INITIATING VARIABLES
         playerrotation = 360;
+        danger = 1;
+        framespast = 0;
         
         [self scheduleUpdate];
 	}
@@ -71,10 +68,27 @@
 -(void)update:(ccTime)dt
 {
     
+    [self touchRotation];
+    [self gameTime];
+    
+    framespast++;
+    
+}
+
+-(void) gameTime
+{
+    if(framespast == 65)
+    {
+        
+    }
+}
+
+-(void) touchRotation
+{
     KKInput* input = [KKInput sharedInput];
     
-   // playerangle = playerangle + directionchange;
-
+    // playerangle = playerangle + directionchange;
+    
     
     if (input.anyTouchBeganThisFrame) {
         
@@ -94,8 +108,6 @@
         [center runAction:rotate];
         
     }
- 
-    
 }
 
 @end

@@ -18,6 +18,10 @@
     CCNode* center;
     
     int playerrotation;
+    
+    int danger;
+    
+    int framespast;
 }
 
 @property (nonatomic, copy) NSString* helloWorldString;
