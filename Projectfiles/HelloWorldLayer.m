@@ -28,7 +28,7 @@
         glClearColor(255,255,255,255);
         
         CCSprite* bg = [CCSprite spriteWithFile:@"Background.png"];
-        [self addChild:bg];
+        [self addChild:bg z:-2];
         bg.position = ccp(160,240);
         
         //THE CLOCK ITSELF.
@@ -46,7 +46,10 @@
         
         //PLAYER MODEL.
         player = [CCSprite spriteWithFile:@"player.png"];
-        player.scale = 0.4;
+        player.scale = 0.2;
+        
+        id tint = [CCTintTo actionWithDuration:1 red:0 green:0 blue:0];
+        [player runAction:tint];
         
         [center addChild:player];
         
@@ -57,6 +60,10 @@
         id rotate = [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:2 angle:360]];
         [center runAction:rotate];
 
+        //label
+        score = [CCLabelTTF labelWithString:@"0" fontName:@"Helvetica" fontSize:32];
+        score.position = ccp(160,450);
+        [self addChild:score];
         
         //INITIATING VARIABLES
         playerrotation = 360;
@@ -66,6 +73,9 @@
         isdead = false;
         tempframespast = 0;
         islightning = false;
+        playerradius = 10;
+        intscore = 0;
+        shield = false;
         
         [self scheduleUpdate];
 	}
@@ -108,33 +118,45 @@
     
     [self checkHail];
     [self checkSpike];
+    [self shieldcollision];
+    
     
     framespast++;
     tempframespast--;
     
-    NSLog(@"%d",framespast);
-    NSLog(@"%d",tempframespast);
     
 }
 
 
 -(void) gameRand
 {
-    if((framespast % 300) == 0)
+    if((framespast % 200) == 0 && isdead == false)
     {
-        int random = arc4random() % 4;
+        intscore += 100;
+        NSString *tempstring = [NSString stringWithFormat:@"%d",intscore];
+        [score setString:tempstring];
+        int random = arc4random() % 12;
         
         switch(random)
         {
             case 0:
+            {
+                [self removeChild:fireball cleanup:YES];
                 fireball = [CCSprite spriteWithFile:@"Fireball.png"];
                 fireball.scale = 0.6;
                 fireball.position = ccp(320,480);
                 [self addChild:fireball];
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:315];
+                [clock runAction:rotate];
                 break;
+            }
             case 1:
+            {
                 tempframespast = 9000;
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:283];
+                [clock runAction:rotate];
                 break;
+            }
             case 2:
             {
                 lightning = [CCSprite spriteWithFile:@"meteor.png"];
@@ -148,15 +170,157 @@
                 
                 [self performSelector:@selector(deleteLightning) withObject:nil afterDelay:4.0f];
                 islightning = true;
+                
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:255];
+                [clock runAction:rotate];
+                
                 break;
             }
             case 3:
+            {
                 tempframespast = 18001;
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:225];
+                [clock runAction:rotate];
                 break;
+            }
+                
+            case 4:
+            {
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:15];
+                [clock runAction:rotate];
+                break;
+            }
+            case 5:
+            {
+                [self removeChild:fireball cleanup:YES];
+                fireball = [CCSprite spriteWithFile:@"Fireball.png"];
+                fireball.scale = 0.6;
+                fireball.position = ccp(320,480);
+                [self addChild:fireball];
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:135];
+                [clock runAction:rotate];
+                break;
+            }
+            case 6:
+            {
+                tempframespast = 9000;
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:105];
+                [clock runAction:rotate];
+                break;
+            }
+            case 7:
+            {
+                lightning = [CCSprite spriteWithFile:@"meteor.png"];
+                lightning.position = ccp(160 ,480);
+                
+                id move = [CCMoveTo actionWithDuration:3 position:ccp(160,50)];
+                
+                [lightning runAction:move];
+                
+                [self addChild:lightning];
+                
+                [self performSelector:@selector(deleteLightning) withObject:nil afterDelay:4.0f];
+                islightning = true;
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:75];
+                [clock runAction:rotate];
+                break;
+            }
+            case 8:
+            {
+                tempframespast = 18001;
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:45];
+                [clock runAction:rotate];
+                break;
+            }
+            case 9:
+            {
+                ///chocholate
+                playerradius = 25;
+                id scale = [CCScaleTo actionWithDuration:1 scale:0.5];
+                [player runAction:scale];
+                [self performSelector:@selector(backthing) withObject:nil afterDelay:10.0f];
+                NSLog(@"hi");
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:345];
+                [clock runAction:rotate];
+                
+                chocobg = [CCSprite spriteWithFile:@"Chocobackground.png"];
+                chocobg.position = ccp(160,240);
+                [self addChild:chocobg z:-1];
+                break;
+            }
+            case 10:
+            {
+                NSLog(@"hi");
+                //chocolate
+                playerradius = 25;
+                id scale = [CCScaleTo actionWithDuration:1 scale:0.5];
+                [player runAction:scale];
+                [self performSelector:@selector(backthing) withObject:nil afterDelay:10.0f];
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:165];
+                [clock runAction:rotate];
+                
+                chocobg = [CCSprite spriteWithFile:@"Chocobackground.png"];
+                chocobg.position = ccp(160,240);
+                [self addChild:chocobg z:-1];
+                break;
+            }
+            case 11:
+            {
+                //shield
+                
+                
+                
+                
+                shieldsprite = [CCSprite spriteWithFile:@"shield.png"];
+                shieldsprite.position = ccp(320,480);
+                [self addChild:shieldsprite];
+                
+                id move = [CCMoveTo actionWithDuration:3 position:ccp(0,0)];
+                
+                [shieldsprite runAction:move];
+                
+                
+                 [self performSelector:@selector(delete) withObject:nil afterDelay:3.0f];
+
+                id rotate = [CCRotateTo actionWithDuration:1.0 angle:195];
+                [clock runAction:rotate];
+                break;
+            }
                 
         }
     }
 }
+
+
+-(void) delete
+{
+    [self removeChild:shieldsprite cleanup:YES];
+
+}
+
+-(void) backthing
+{
+    playerradius = 10;
+    [player stopAllActions];
+    id scale = [CCScaleTo actionWithDuration:1 scale:0.4];
+    [player runAction:scale];
+    
+    [self removeChild:chocobg cleanup:YES];
+    
+    NSLog(@"ahoy matery.");
+    
+    [self unschedule:@selector(backthing)];
+}
+
+-(void) shieldoff
+{
+    shield = false;
+    id tint = [CCTintTo actionWithDuration:1.0f red:0 green:0 blue:0];
+    [player runAction:tint];
+}
+
+
+
 
 
 -(void) checkHail
@@ -232,6 +396,8 @@
 
 }
 
+
+
 -(void) gameTime
 {
     if(framespast == 65)
@@ -280,7 +446,6 @@
         [self addChild:spikeball4];
         
     }
-    NSLog(@"%d",framespast);
    
 }
 
@@ -298,14 +463,13 @@
 -(BOOL) isCollidingRect:(CCSprite *) spriteOne WithSphere:(CCSprite *) spriteTwo {
     
 
-    return CGRectIntersectsRect([spriteOne boundingBox],CGRectMake(actualPosition.x,actualPosition.y,20,20));
+    return CGRectIntersectsRect([spriteOne boundingBox],CGRectMake(actualPosition.x,actualPosition.y,playerradius*2,playerradius*2));
 }
 
 -(void) deleteLightning
 {
     [self removeChild:lightning];
     islightning = false;
-    NSLog(@"ad");
 }
 
 -(void) restartGame
@@ -329,7 +493,6 @@
 {
     KKInput* input = [KKInput sharedInput];
     
-    // playerangle = playerangle + directionchange;
     
     
     if (input.anyTouchBeganThisFrame) {
@@ -387,10 +550,10 @@
     }
     
     
-    if(framespast > 64)
+    if(framespast > 3)
     {
         float diff = ccpDistance(actualPosition, fireball.position);
-        if (diff <  10 + 80) {
+        if (diff <  playerradius + 80) {
             [self deadPlayer];
             
         }
@@ -399,7 +562,7 @@
 
 -(void) spikeballCollision
 {
-    if(framespast > 64)
+    if(framespast > 3)
     {
         float diff = ccpDistance(actualPosition, spikeball.position);
         if (diff <  10 + 68) {
@@ -424,6 +587,12 @@
     }
 }
 
+
+
+
+
+
+
 -(void) hailCollision
 {
     
@@ -432,10 +601,35 @@
         {
             CCSprite* temp = [hail objectAtIndex:i];
             float diff = ccpDistance(actualPosition, temp.position);
-            if (diff <  10 + 10) {
+            if (diff <  playerradius + 10) {
                 [self deadPlayer];
                 
             }
+        }
+}
+
+
+
+
+
+-(void) shieldcollision
+{
+
+        float diff = ccpDistance(actualPosition, shieldsprite.position);
+        if (diff <  playerradius + 75) {
+            shield = true;
+            [self performSelector:@selector(shieldoff) withObject:nil afterDelay:10.0f];
+            
+            
+            id tint = [CCTintTo actionWithDuration:1.0f red:0 green:255 blue:0];
+            [player runAction:tint];
+            
+           
+            
+            
+            [self removeChild:shieldsprite cleanup:YES];
+
+            
         }
     
 }
@@ -445,12 +639,17 @@
 {
     if(isdead == false)
     {
-    [center removeChild:player];
-    youdie = [CCLabelTTF labelWithString:@"B+ you die" fontName:@"Helvetica" fontSize:64];
-    youdie.color = ccc3(155, 89, 182);
-    [self addChild:youdie];
-    youdie.position = ccp(160,400);
-    isdead = true;
+        if(shield == false)
+        {
+        [self removeChild:score cleanup:YES];
+        [center removeChild:player];
+        NSString* tempstring = [NSString stringWithFormat:@"You Die. %d points",intscore];
+        youdie = [CCLabelTTF labelWithString:tempstring fontName:@"Helvetica" fontSize:16];
+        youdie.color = ccc3(155, 89, 182);
+        [self addChild:youdie];
+        youdie.position = ccp(160,400);
+        isdead = true;
+        }
     }
 }
 

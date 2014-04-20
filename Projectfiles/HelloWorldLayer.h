@@ -13,6 +13,9 @@
 	NSString* helloWorldFontName;
 	int helloWorldFontSize;
     
+    CCLabelTTF *score;
+    int intscore;
+    
     CCSprite* clock;
     CCSprite* player;
     CCNode* center;
@@ -24,11 +27,14 @@
     
     CCSprite* lightning;
     
+    CCSprite* chocobg;
+    
     int fireballdirection;
     int playerrotation;
     int danger;
     int framespast;
     int tempframespast;
+    int playerradius;
     
     bool isdead;
     
@@ -41,8 +47,13 @@
     CCSprite* spikeball3;
     CCSprite* spikeball4;
     
+    CCSprite* shieldsprite;
+    
     bool islightning;
+    bool shield;
 }
+
++(id) scene;
 
 @property (nonatomic, copy) NSString* helloWorldString;
 @property (nonatomic, copy) NSString* helloWorldFontName;
