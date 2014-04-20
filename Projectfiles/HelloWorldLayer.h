@@ -17,6 +17,9 @@
     CCSprite* player;
     CCNode* center;
     
+    CCSprite* fireball;
+    int fireballdirection;
+    
     int playerrotation;
     
     int danger;

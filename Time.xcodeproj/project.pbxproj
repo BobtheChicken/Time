@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A303F671903627900D89A7D /* Chocolate-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F5D1903627900D89A7D /* Chocolate-hd.png */; };
+		0A303F681903627900D89A7D /* Chocolate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F5E1903627900D89A7D /* Chocolate.png */; };
+		0A303F691903627900D89A7D /* Fireball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F5F1903627900D89A7D /* Fireball-hd.png */; };
+		0A303F6A1903627900D89A7D /* Fireball.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F601903627900D89A7D /* Fireball.png */; };
+		0A303F6B1903627900D89A7D /* Frog-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F611903627900D89A7D /* Frog-hd.png */; };
+		0A303F6C1903627900D89A7D /* Frog.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F621903627900D89A7D /* Frog.png */; };
+		0A303F6D1903627900D89A7D /* Hail-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F631903627900D89A7D /* Hail-hd.png */; };
+		0A303F6E1903627900D89A7D /* Hail.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F641903627900D89A7D /* Hail.png */; };
+		0A303F6F1903627900D89A7D /* thunder-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F651903627900D89A7D /* thunder-hd.png */; };
+		0A303F701903627900D89A7D /* thunder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A303F661903627900D89A7D /* thunder.png */; };
 		0AEBD22419032FE10080585A /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBD22319032FE10080585A /* clock.png */; };
 		0AEBD229190333CF0080585A /* clock-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBD225190333CF0080585A /* clock-hd.png */; };
 		0AEBD22A190333CF0080585A /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBD226190333CF0080585A /* clock.png */; };
@@ -76,6 +86,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A303F5D1903627900D89A7D /* Chocolate-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chocolate-hd.png"; sourceTree = "<group>"; };
+		0A303F5E1903627900D89A7D /* Chocolate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chocolate.png; sourceTree = "<group>"; };
+		0A303F5F1903627900D89A7D /* Fireball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fireball-hd.png"; sourceTree = "<group>"; };
+		0A303F601903627900D89A7D /* Fireball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fireball.png; sourceTree = "<group>"; };
+		0A303F611903627900D89A7D /* Frog-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Frog-hd.png"; sourceTree = "<group>"; };
+		0A303F621903627900D89A7D /* Frog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Frog.png; sourceTree = "<group>"; };
+		0A303F631903627900D89A7D /* Hail-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hail-hd.png"; sourceTree = "<group>"; };
+		0A303F641903627900D89A7D /* Hail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hail.png; sourceTree = "<group>"; };
+		0A303F651903627900D89A7D /* thunder-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thunder-hd.png"; sourceTree = "<group>"; };
+		0A303F661903627900D89A7D /* thunder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thunder.png; sourceTree = "<group>"; };
 		0AEBD22319032FE10080585A /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		0AEBD225190333CF0080585A /* clock-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-hd.png"; sourceTree = "<group>"; };
 		0AEBD226190333CF0080585A /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
@@ -310,6 +330,16 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0A303F5D1903627900D89A7D /* Chocolate-hd.png */,
+				0A303F5E1903627900D89A7D /* Chocolate.png */,
+				0A303F5F1903627900D89A7D /* Fireball-hd.png */,
+				0A303F601903627900D89A7D /* Fireball.png */,
+				0A303F611903627900D89A7D /* Frog-hd.png */,
+				0A303F621903627900D89A7D /* Frog.png */,
+				0A303F631903627900D89A7D /* Hail-hd.png */,
+				0A303F641903627900D89A7D /* Hail.png */,
+				0A303F651903627900D89A7D /* thunder-hd.png */,
+				0A303F661903627900D89A7D /* thunder.png */,
 				0AEBD22D190333E00080585A /* player-hd.png */,
 				0AEBD22E190333E00080585A /* player.png */,
 				0AEBD225190333CF0080585A /* clock-hd.png */,
@@ -423,32 +453,42 @@
 				0AEBD229190333CF0080585A /* clock-hd.png in Resources */,
 				DCC1A0FA13A94ED5005BD75D /* Default.png in Resources */,
 				0AEBD230190333E00080585A /* player.png in Resources */,
+				0A303F6E1903627900D89A7D /* Hail.png in Resources */,
 				DCC1A0FC13A94ED5005BD75D /* fps_images.png in Resources */,
 				DCC1A0FE13A94ED5005BD75D /* Icon-72.png in Resources */,
 				DCC1A10013A94ED5005BD75D /* Icon-Small-50.png in Resources */,
 				DCC1A10213A94ED5005BD75D /* Icon-Small.png in Resources */,
+				0A303F701903627900D89A7D /* thunder.png in Resources */,
 				DCC1A10413A94ED5005BD75D /* Icon-Small@2x.png in Resources */,
+				0A303F691903627900D89A7D /* Fireball-hd.png in Resources */,
 				0AEBD22419032FE10080585A /* clock.png in Resources */,
 				0AEBD22A190333CF0080585A /* clock.png in Resources */,
+				0A303F671903627900D89A7D /* Chocolate-hd.png in Resources */,
 				DCC1A10613A94ED5005BD75D /* Icon.png in Resources */,
 				DCC1A10813A94ED5005BD75D /* Icon@2x.png in Resources */,
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
 				DC485B4813AA194F00F2BC70 /* ship.png in Resources */,
+				0A303F6D1903627900D89A7D /* Hail-hd.png in Resources */,
+				0A303F6B1903627900D89A7D /* Frog-hd.png in Resources */,
+				0A303F6C1903627900D89A7D /* Frog.png in Resources */,
 				DC485B4B13AA1C0E00F2BC70 /* ship-hd.png in Resources */,
 				DC275D2B13B27DBF009C5098 /* Pow.caf in Resources */,
 				DC1BE6A014F417CC00F49D25 /* Ubuntu-B.ttf in Resources */,
 				DC1BE6A114F417CC00F49D25 /* Ubuntu-BI.ttf in Resources */,
 				DC1BE6A214F417CC00F49D25 /* Ubuntu-C.ttf in Resources */,
+				0A303F6F1903627900D89A7D /* thunder-hd.png in Resources */,
 				DC1BE6A314F417CC00F49D25 /* Ubuntu-L.ttf in Resources */,
 				DC1BE6A414F417CC00F49D25 /* Ubuntu-LI.ttf in Resources */,
 				DC1BE6A514F417CC00F49D25 /* Ubuntu-M.ttf in Resources */,
 				DC1BE6A614F417CC00F49D25 /* Ubuntu-MI.ttf in Resources */,
 				DC1BE6A714F417CC00F49D25 /* Ubuntu-R.ttf in Resources */,
+				0A303F6A1903627900D89A7D /* Fireball.png in Resources */,
 				DC1BE6A814F417CC00F49D25 /* Ubuntu-RI.ttf in Resources */,
 				DC1BE6A914F417CC00F49D25 /* UbuntuMono-B.ttf in Resources */,
 				DC1BE6AA14F417CC00F49D25 /* UbuntuMono-BI.ttf in Resources */,
 				DC1BE6AB14F417CC00F49D25 /* UbuntuMono-R.ttf in Resources */,
 				DC1BE6AC14F417CC00F49D25 /* UbuntuMono-RI.ttf in Resources */,
+				0A303F681903627900D89A7D /* Chocolate.png in Resources */,
 				DC26D6DA14B9F2C600B6002E /* fps_images-hd.png in Resources */,
 				DC65617315114B4A00E59F8A /* fps_images-ipadhd.png in Resources */,
 				DC2721A2160CAEB600D88944 /* Default-568h@2x.png in Resources */,
