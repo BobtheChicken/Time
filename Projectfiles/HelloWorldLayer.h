@@ -17,14 +17,31 @@
     CCSprite* player;
     CCNode* center;
     
+    CGPoint actualPosition;
+    CGPoint worldPosition;
+    
     CCSprite* fireball;
+    
+    CCSprite* lightning;
+    
     int fireballdirection;
-    
     int playerrotation;
-    
     int danger;
-    
     int framespast;
+    int tempframespast;
+    
+    bool isdead;
+    
+    CCLabelTTF *youdie;
+    
+    NSMutableArray* hail;
+    
+    CCSprite* spikeball;
+    CCSprite* spikeball2;
+    CCSprite* spikeball3;
+    CCSprite* spikeball4;
+    
+    bool islightning;
 }
 
 @property (nonatomic, copy) NSString* helloWorldString;
