@@ -35,19 +35,31 @@
         
         
         
+        center = [CCNode node];
+        center.position = CGPointMake(160, 240);
+        [self addChild:center];
+        
         //PLAYER MODEL.
         player = [CCSprite spriteWithFile:@"player.png"];
         player.scale = 0.4;
-        player.position = ccp(155,390);
-        [self addChild:player];
+        
+        [center addChild:player];
+        
+        // offset rotateMe from center by 100 points to the right
+        player.position = CGPointMake(100, 0);
+        
+        // perform rotation of rotateMe around center by rotating center
+        id rotate = [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:1 angle:360]];
+        [center runAction:rotate];
+        
+        
+        
+        
         
         
         
         //INITIATING VARIABLES
-        playerangle = 180;
-        playerspeed = 7;
-        directionchange = 4;
-        direction = true;
+        playerrotation = 360;
         
         [self scheduleUpdate];
 	}
@@ -60,40 +72,30 @@
 {
     
     KKInput* input = [KKInput sharedInput];
+    
+   // playerangle = playerangle + directionchange;
+
+    
+    if (input.anyTouchBeganThisFrame) {
+        
+        [center stopAllActions];
+        id rotate;
+        
+        if(playerrotation == 360)
+        {
+            rotate = [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:1 angle:-360]];
+            playerrotation = -360;
+        }
+        else if(playerrotation == -360)
+        {
+            rotate = [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:1 angle:360]];
+            playerrotation = 360;
+        }
+        [center runAction:rotate];
+        
+    }
  
-    if(direction)
-    {
-        playerangle = playerangle + directionchange;
-    }
-    else
-    {
-        playerangle = playerangle - directionchange;
-    }
     
-    
-    if ([KKInput sharedInput].anyTouchBeganThisFrame) {
-        direction = !direction;
-        playerangle = 180 - playerangle;
-    }
-
-    
-    [self movePlayer];
-
-}
-
-
--(void) movePlayer
-{
-    //MOVING THE PLAYER IN A CERTAIN DIRECTION.
-    float angle = playerangle;
-    float speed = playerspeed; // Move 50 pixels in 60 frames (1 second)
-    
-    float vx = cos(angle * M_PI / 180) * speed;
-    float vy = sin(angle * M_PI / 180) * speed;
-    
-    CGPoint direction2 = ccp(vx,vy);
-    
-    player.position = ccpAdd(player.position, direction2);
 }
 
 @end

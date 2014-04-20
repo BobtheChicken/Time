@@ -15,11 +15,9 @@
     
     CCSprite* clock;
     CCSprite* player;
+    CCNode* center;
     
-    int playerspeed;
-    int playerangle;
-    int directionchange;
-    bool direction;
+    int playerrotation;
 }
 
 @property (nonatomic, copy) NSString* helloWorldString;
