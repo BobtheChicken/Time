@@ -9,5 +9,8 @@
 #import "CCScene.h"
 
 @interface Title : CCScene
+{
+    CCSprite* wheel;
+}
 
 @end

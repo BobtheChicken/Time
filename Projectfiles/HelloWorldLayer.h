@@ -16,6 +16,11 @@
     CCLabelTTF *score;
     int intscore;
     
+    int random;
+    
+    CCLabelTTF* highscore;
+    int inthighscore;
+    
     CCSprite* clock;
     CCSprite* player;
     CCNode* center;
@@ -28,8 +33,17 @@
     CCSprite* lightning;
     
     CCSprite* chocobg;
+        
+    CCSprite* missle;
+    
+    CCSprite* mute;
+    
+    CCSprite* bomb;
+    
+    NSMutableArray* bombpieces;
     
     int fireballdirection;
+    int missledirection;
     int playerrotation;
     int danger;
     int framespast;
@@ -39,8 +53,10 @@
     bool isdead;
     
     CCLabelTTF *youdie;
+    CCLabelTTF* retry;
     
     NSMutableArray* hail;
+    NSMutableArray* cards;
     
     CCSprite* spikeball;
     CCSprite* spikeball2;
